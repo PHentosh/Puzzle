@@ -5,6 +5,9 @@ https://github.com/PHentosh/Puzzle
 def check_rows(board: list)-> bool:
     """
     Check if in rows are the same numbers
+    >>> check_rows(["**** ****", "***1 ****", "**  3****", "* 4 1****", \
+    "     9 5 ", " 6  83  *", "3   1  **", "  8  2***", "  2  ****"])
+    True
     """
     for i in board:
         numbers = []
@@ -20,6 +23,9 @@ def check_rows(board: list)-> bool:
 def check_columns(board: list)-> bool:
     """
     Check if in colnmns are the same numbers
+    >>> check_columns(["**** ****", "***1 ****", "**  3****", "* 4 1****", \
+    "     9 5 ", " 6  83  *", "3   1  **", "  8  2***", "  2  ****"])
+    False
     """
     new_board = []
     for i in range(len(board)):
@@ -32,13 +38,16 @@ def check_columns(board: list)-> bool:
 def check_colored_cells(board: list)-> bool:
     """
     Check if in colored cells are the same numbers
+    >>> check_colored_cells(["**** ****", "***1 ****", "**  3****", "* 4 1****", \
+    "     9 5 ", " 6  83  *", "3   1  **", "  8  2***", "  2  ****"])
+    True
     """
     color = ['', '', '', '', '']
     for i in range(5):
-        for y in range(5):
-            color[i] = color[i] + board[8-i-y][i]
-        for x in range(5):
-            color[i] = color[i] + board[8-i][x+i]
+        for col in range(5):
+            color[i] = color[i] + board[8-i-col][i]
+        for row in range(5):
+            color[i] = color[i] + board[8-i][row+i]
         color[i] = color[i][1:]
     return check_rows(color)
 
