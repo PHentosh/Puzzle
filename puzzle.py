@@ -32,11 +32,18 @@ def check_colored_cells(board: list)-> bool:
     """
     Check if in colored cells are the same numbers
     """
-    pass
-
+    color = ['', '', '', '', '']
+    for i in range(5):
+        for y in range(5):
+            color[i] = color[i] + board[8-i-y][i]
+        for x in range(5):
+            color[i] = color[i] + board[8-i][x+i]
+        color[i] = color[i][1:]
+    return check_rows(color)
 
 def validate_board(board: list)-> bool:
     """
     Check if board is ready for game
     """
-    pass
+    return check_colored_cells(board) and \
+        check_columns(board) and check_rows(board)
