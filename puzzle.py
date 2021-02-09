@@ -1,4 +1,5 @@
 """
+https://github.com/PHentosh/Puzzle
 """
 
 def check_rows(board: list)-> bool:
